@@ -1,0 +1,248 @@
+{
+    "6879": {
+        "questions": [
+            {
+                "question": "Mib\u0151l k\u00e9sz\u00edtik a m\u00e9hek a m\u00e9zet?",
+                "answers": [
+                    "nekt\u00e1rb\u00f3l",
+                    "vir\u00e1gpob\u00f3l",
+                    "viaszb\u00f3l",
+                    "-"
+                ],
+                "correct_answer": "nekt\u00e1rb\u00f3l"
+            },
+            {
+                "question": "Melyik m\u00e9z feh\u00e9r sz\u00edn\u0171 krist\u00e1lyos \u00e1llapotban?",
+                "answers": [
+                    "h\u00e1rsm\u00e9z",
+                    "napraforg\u00f3m\u00e9z",
+                    "repcem\u00e9z",
+                    "-"
+                ],
+                "correct_answer": "repcem\u00e9z"
+            },
+            {
+                "question": "H\u00e1ny l\u00e1ba van egy m\u00e9hnek?",
+                "answers": [
+                    "4",
+                    "2",
+                    "6",
+                    "-"
+                ],
+                "correct_answer": "6"
+            },
+            {
+                "question": "Mit nem gy\u0171jt egy m\u00e9h?",
+                "answers": [
+                    "m\u00e9zet",
+                    "vir\u00e1gport",
+                    "nekt\u00e1rt",
+                    ""
+                ],
+                "correct_answer": "m\u00e9zet"
+            },
+            {
+                "question": "Mit sz\u00e1ll\u00edt a l\u00e1b\u00e1n egy dolgoz\u00f3 m\u00e9h?",
+                "answers": [
+                    "m\u00e9zet",
+                    "vir\u00e1gport",
+                    "nekt\u00e1rt",
+                    "-"
+                ],
+                "correct_answer": "vir\u00e1gport"
+            },
+            {
+                "question": "H\u00e1ny anya van egy m\u00e9hcsal\u00e1dban?",
+                "answers": [
+                    "2",
+                    "1",
+                    "t\u00f6bb",
+                    "-"
+                ],
+                "correct_answer": "1"
+            }
+        ]
+    },
+    "1": {
+        "name": "1 Kg m\u00e9zes \u00fcveg tet\u0151vel",
+        "time": "1892-1910",
+        "madeof": "\u00fcveg  f\u00e9m tet\u0151vel",
+        "description": "nikkelezett fed\u00e9llel ell\u00e1tott , 1 Kg m\u00e9z befogad\u00e1s\u00e1ra alkalmas \u00fcveg csavaros kivitelben",
+        "photos": [
+            "uploads\/1k_uveg_csavaros_tetovel.jpg"
+        ]
+    },
+    "3": {
+        "name": "Angliai M\u00e9hes Kert",
+        "time": "1768",
+        "madeof": "kem\u00e9nyk\u00f6t\u00e9s\u0171 pap\u00edr",
+        "description": "Szatm\u00e1ri Kir\u00e1ly Gy\u00f6rgy (1728-1787) a 18. sz\u00e1zad egyik kiemelked\u0151 magyar tud\u00f3sa volt, aki a teol\u00f3gia, a filoz\u00f3fia, a matematika \u00e9s a term\u00e9szettudom\u00e1nyok ter\u00fclet\u00e9n is j\u00e1rtas volt. T\u00f6bb nyelven is besz\u00e9lt, \u00e9s bej\u00e1rta Eur\u00f3p\u00e1t, hogy b\u0151v\u00edtse tud\u00e1s\u00e1t.<br> <br>\r\n\r\nAngliai tart\u00f3zkod\u00e1sa sor\u00e1n (1756-1759) John Gedde sk\u00f3t kert\u00e9sz Angliai M\u00e9heskert (The English Bee-Garden) c\u00edm\u0171 m\u0171v\u00e9vel ismerkedett meg. A m\u00e9h\u00e9szet ir\u00e1nt elk\u00f6telezett Kir\u00e1ly Gy\u00f6rgy \u00fagy \u00e9rezte, hogy ez a k\u00f6nyv rendk\u00edv\u00fcl \u00e9rt\u00e9kes forr\u00e1s lehet a magyar m\u00e9h\u00e9szek sz\u00e1m\u00e1ra, ez\u00e9rt leford\u00edtotta magyarra.<br> <br>\r\n\r\nA ford\u00edt\u00e1st 1759-ben adt\u00e1k ki Egerben \"Angliai M\u00e9hes Kert, Mellyben A' M\u00e9heknek Term\u00e9szete, Haszna, Tselekedeti, \u00e9s azoknak Korm\u00e1nyz\u00e1sok m\u00f3dgya, a' M\u00e9znek, \u00e9s Viasznak Szed\u00e9se, 's a' M\u00e9hes Kerteknek Hasznos Haszn\u00e1lata, Angliai nyelven irta Gedde J\u00e1nos, Most pedig Magyarra ford\u00edtotta Szathm\u00e1ri Kir\u00e1ly Gy\u00f6rgy\" c\u00edmmel.<br> <br>\r\n\r\nKir\u00e1ly Gy\u00f6rgy ford\u00edt\u00e1sa nem csup\u00e1n a Gedde m\u0171v\u00e9nek h\u0171 tolm\u00e1csol\u00e1sa volt, hanem a magyar m\u00e9h\u00e9szeti szaknyelv megteremt\u00e9s\u00e9ben is fontos szerepet j\u00e1tszott. A ford\u00edt\u00e1s bevezet\u0151j\u00e9ben Kir\u00e1ly Gy\u00f6rgy kifejtette a m\u00e9h\u00e9szet fontoss\u00e1g\u00e1t, \u00e9s hangs\u00falyozta a tudom\u00e1nyos m\u00e9h\u00e9szeti ismeretek terjeszt\u00e9s\u00e9nek sz\u00fcks\u00e9gess\u00e9g\u00e9t.<br> <br>\r\n\r\nAz Angliai M\u00e9heskert magyar kiad\u00e1sa nagy sikert aratott, \u00e9s a 18. sz\u00e1zad v\u00e9g\u00e9n, a 19. sz\u00e1zad elej\u00e9n a magyar m\u00e9h\u00e9szek egyik legfontosabb k\u00e9zik\u00f6nyve volt. A k\u00f6nyvnek k\u00f6sz\u00f6nhet\u0151en Gedde munk\u00e1ss\u00e1ga sz\u00e9les k\u00f6rben ismertt\u00e9 v\u00e1lt Magyarorsz\u00e1gon, \u00e9s jelent\u0151sen hozz\u00e1j\u00e1rult a magyar m\u00e9h\u00e9szeti tudom\u00e1ny fejl\u0151d\u00e9s\u00e9hez.<br> <br>\r\n\r\nAz Angliai M\u00e9heskert ford\u00edt\u00e1s\u00e1nak k\u00f6sz\u00f6nhet\u0151en Szatm\u00e1ri Kir\u00e1ly Gy\u00f6rgy fontos szerepet j\u00e1tszott a magyar m\u00e9h\u00e9szet t\u00f6rt\u00e9net\u00e9ben. A ford\u00edt\u00e1s nem csup\u00e1n a m\u00e9h\u00e9szeti ismeretek terjeszt\u00e9s\u00e9hez j\u00e1rult hozz\u00e1, de a magyar tudom\u00e1nyos nyelv fejl\u0151d\u00e9s\u00e9t is el\u0151seg\u00edtette.\r\n",
+        "photos": [
+            "uploads\/ang_kert1.jpg",
+            "uploads\/ang_kert02.jpg",
+            "uploads\/ang_kert3.jpg",
+            "uploads\/ang_kert4.jpg",
+            "uploads\/ang_kert5.jpg"
+        ]
+    },
+    "2": {
+        "name": "1\/8 Kg m\u00e9zes \u00fcveg",
+        "time": "1892-1920",
+        "madeof": "\u00fcveg",
+        "description": "1\/8 Kg (kb 125g) m\u00e9z befogad\u00e1s\u00e1ra alkalmas \u00fcveg csavaros kivitelben",
+        "photos": [
+            "uploads\/1per8k_uveg.jpg"
+        ]
+    },
+    "4": {
+        "name": "Original K\u00f6nig  \u201eVulkan\u201d",
+        "time": "2010",
+        "madeof": " f\u00e9m",
+        "description": "Ezek a f\u00fcst\u00f6l\u0151k egyedi kialak\u00edt\u00e1sukr\u00f3l ismertek, amelyek egy \u00f3raszerkezetes rug\u00f3s mechanizmust tartalmaznak A modern m\u00e9hf\u00fcst\u00f6l\u0151k gyakran egyszer\u0171bb kialak\u00edt\u00e1s\u00faak, \u00e9s elektromos vagy akkumul\u00e1toros f\u00fajtat\u00f3t haszn\u00e1lnak. C t\u00edpus\u00fa elemmel m\u0171k\u00f6dik.<br><b>Adom\u00e1nyoz\u00f3: N\u00e9hai Kepenyes Gy\u00f6rgy ut\u00e1n l\u00e1nyai Kepenyes Edit \u00e9s Kepenyes Csilla Szarvas<\/b>",
+        "photos": [
+            "uploads\/e_fust.jpg"
+        ]
+    },
+    "5": {
+        "name": "Magyar M\u00e9h",
+        "time": "1905",
+        "madeof": "kem\u00e9ny k\u00f6t\u00e9s\u0171 pap\u00edr",
+        "description": "Magyar M\u00e9h 1905  egybek\u00f6t\u00f6tt p\u00e9ld\u00e1nyait tartalmazza. <br> <br>\r\nszerkeszt\u0151 :Tanos P\u00e1l\r\nJelen foly\u00f3irat tartalmazza az 1905-\u00f6s Orsz\u00e1gos Magyar M\u00e9h\u00e9szeti Egyes\u00fclet (OMME) alap\u00edt\u00f3it \u00e9s tagjait,k\u00f6zt\u00fck gr\u00f3f Bolza P\u00e1l, aki megalap\u00edtotta a Szarvasi Arbor\u00e9tumot.\r\n",
+        "photos": [
+            "uploads\/mmk1.jpg",
+            "uploads\/mmk2.jpg",
+            "uploads\/mmk3.jpg",
+            "uploads\/mmk4.jpg",
+            "uploads\/mmk5.jpg"
+        ]
+    },
+    "6": {
+        "name": "M\u00e9h\u00e9sz \u00dajs\u00e1g",
+        "time": "1992-1993-1994",
+        "madeof": "kem\u00e9ny k\u00f6t\u00e9s\u00fc pap\u00edr",
+        "description": " Egybek\u00f6t\u00f6tt m\u00e9h\u00e9sz \u00fajs\u00e1gok teljes \u00e9vfolyamai <br>\r\n<b>Adom\u00e1nyoz\u00f3: MIKL\u00d3S P\u00c1L J\u00e1szber\u00e9ny<\/b>\r\n",
+        "photos": [
+            "uploads\/mu1.jpg",
+            "uploads\/mu2.jpg",
+            "uploads\/mu3.jpg",
+            "uploads\/mu4.jpg"
+        ]
+    },
+    "7": {
+        "name": "M\u00e9h\u00e9szet",
+        "time": "1987-1994",
+        "madeof": "Kem\u00e9nyk\u00f6t\u00e9s\u0171 pap\u00edr",
+        "description": "1987 7 lapsz\u00e1m,illetve 1988-1994-ig teljes \u00e9vfolyamok egybek\u00f6tve\r\n <br><b> Adom\u00e1nyoz\u00f3: Mikl\u00f3s P\u00e1l J\u00e1szber\u00e9ny<\/b>",
+        "photos": [
+            "uploads\/65f58b09675039.18531361_m1.jpg",
+            "uploads\/65f58b09695ad7.20962928_m2.jpg",
+            "uploads\/65f58b096f6e75.48112120_m3.jpg",
+            "uploads\/65f58b097101e8.99600307_m4.jpg"
+        ]
+    },
+    "9": {
+        "name": "Alf\u00f6ldi kas",
+        "time": "1960",
+        "madeof": "vessz\u0151",
+        "description": "magass\u00e1ga: 41cm<br>als\u00f3 \u00e1tm\u00e9r\u0151: 41cm<br><b>Adom\u00e1nyoz\u00f3: Feh\u00e9r S\u00e1ndor Ok\u00e1ny<\/b>",
+        "photos": [
+            "uploads\/65f5ce0aafba32.35843011_alfoldi_kas.jpg"
+        ]
+    },
+    "8": {
+        "name": "Tapasztott Gy\u00e9k\u00e9nykas",
+        "time": "kb 1940",
+        "madeof": "gy\u00e9k\u00e9ny, s\u00e1r",
+        "description": "Felvid\u00e9ki tapasztott gy\u00e9k\u00e9nykas<br>Magass\u00e1ga: 38cm<br>Als\u00f3 \u00e1tm\u00e9r\u0151: 69cm",
+        "photos": [
+            "uploads\/65f5cef7013595.05182151_gyeken_kas2.jpg",
+            "uploads\/65f5cef7042189.38942959_gyekeny_kas1.jpg"
+        ]
+    },
+    "10": {
+        "name": "Postai anyasz\u00e1ll\u00edt\u00f3 doboz",
+        "time": "Na",
+        "madeof": "fa",
+        "description": "A m\u00e9hany\u00e1k postai \u00faton t\u00f6rt\u00e9n\u0151 sz\u00e1ll\u00edt\u00e1sra k\u00e9sz\u00fclt.<br>Egyszerre 50 m\u00e9hany\u00e1t lehetett vele sz\u00e1ll\u00edtani.<br><b>Adom\u00e1nyoz\u00f3: Dajka Zolt\u00e1n Szarvas<\/b>",
+        "photos": [
+            "uploads\/65f5d1b95a85b1.05938755_pota1.jpg",
+            "uploads\/65f5d1b95e4e62.79079629_pota2.jpg",
+            "uploads\/65f5d1b960cce5.72990017_pota3.jpg",
+            "uploads\/65f5d1b96462d8.61471259_pota4.jpg",
+            "uploads\/65f5d1b9683098.48535459_pota5.jpg"
+        ]
+    },
+    "11": {
+        "name": "Anyaz\u00e1rka",
+        "time": "Na",
+        "madeof": "fa,f\u00e9m",
+        "description": "Anyaz\u00e1rka,melyben egyszerre 15 m\u00e9hanya helyezhet\u0151 el.",
+        "photos": [
+            "uploads\/65f5d6efe356b5.10176514_anyazarka1.jpg",
+            "uploads\/65f5d6efe502f3.11716724_anyazarka2.jpg",
+            "uploads\/65f5d6efe9b8d9.79580565_anyazarka3.jpg"
+        ]
+    },
+    "12": {
+        "name": "M\u00e9h\u00e9szeti gy\u00f3gyszerek",
+        "time": "2003-2011",
+        "madeof": "Na",
+        "description": "K\u00fcl\u00f6nb\u00f6z\u0151 atkairt\u00e1shoz haszn\u00e1latos gy\u00f3gyszerek, melyeket m\u00e1r kivontak a forgalomb\u00f3l.<br><b>Adom\u00e1nyoz\u00f3: Marada M\u00e1t\u00e9 Szabadegyh\u00e1za<\/b>",
+        "photos": [
+            "uploads\/65f7136981c276.97231500_gyogyszer1.jpg",
+            "uploads\/65f71369859765.80708475_gyogyszer2.jpg",
+            "uploads\/65f71369884b97.69046294_gyogyszer3.jpg",
+            "uploads\/65f713698b2fa5.55982795_gyogyszer4.jpg",
+            "uploads\/65f713698db947.82218902_gyogyszer5.jpg"
+        ]
+    },
+    "13": {
+        "name": "Orsz\u00e1gos m\u0171l\u00e9pk\u00e9sz\u00edt\u0151",
+        "time": "1919",
+        "madeof": "f\u00e9m",
+        "description": "A m\u0171l\u00e9pnek h\u00e1zi el\u0151\u00e1ll\u00edt\u00e1s\u00e1ra, cink\u00f6tv\u00f6zetb\u0151l, szolid, megb\u00edzhat\u00f3 min\u0151s\u00e9gben k\u00e9sz\u00fclt. Eredeti Rietsche gy\u00e1tm\u00e1ny",
+        "photos": [
+            "uploads\/65f717ed0faac7.77536537_viaszpres1.jpg",
+            "uploads\/65f717ed1344f3.66855336_viaszpres2.jpg",
+            "uploads\/65f717ed190a88.15770718_viaszpres3.jpg",
+            "uploads\/65f717ed1a3dc1.12612927_viaszpres4.jpg"
+        ]
+    },
+    "14": {
+        "name": "Vajdas\u00e1gi tapasztott gy\u00e9k\u00e9nykas",
+        "time": "1920",
+        "madeof": "gy\u00e9k\u00e9ny",
+        "description": "A vajdas\u00e1gi gy\u00e9k\u00e9nykas egy hagyom\u00e1nyos k\u00e9zm\u0171ves term\u00e9k, melyet a D\u00e9lvid\u00e9ken, f\u0151leg Vajdas\u00e1gban k\u00e9sz\u00edtenek. A gy\u00e9k\u00e9nyb\u0151l font kasokat sokf\u00e9le c\u00e9lra haszn\u00e1lj\u00e1k, de legink\u00e1bb a mez\u0151gazdas\u00e1gban \u00e9s a h\u00e1ztart\u00e1sban. A gy\u00e9k\u00e9nykasok strapab\u00edr\u00f3ak, v\u00edz\u00e1ll\u00f3ak \u00e9s k\u00f6nny\u0171ek, \u00edgy ide\u00e1lisak a term\u00e9nyek t\u00e1rol\u00e1s\u00e1ra \u00e9s sz\u00e1ll\u00edt\u00e1s\u00e1ra.",
+        "photos": [
+            "uploads\/65f71ba12f6c13.35654520_vajdasag.jpg"
+        ]
+    },
+    "15": {
+        "name": "Kapt\u00e1rpr\u00e9s",
+        "time": "1920-as \u00e9vek",
+        "madeof": "kem\u00e9ny fa",
+        "description": "Kapt\u00e1rat lehet vele k\u00e9sz\u00edteni n\u00e1db\u00f3l \u00e9s zsupp-b\u00f3l.<br>K\u00e9sz\u00edtette: Dohm\u00fcller J\u00f3zsef ciszterci ap\u00e1ts\u00e1gi bogn\u00e1rmester Zirc.",
+        "photos": [
+            "uploads\/65f7253246b844.14357937_kaptarpres.jpg",
+            "uploads\/65f725324a0934.01251817_kaptarpres2.jpg"
+        ]
+    },
+    "16": {
+        "name": "Zupp kapt\u00e1rfi\u00f3k",
+        "time": "1920",
+        "madeof": "fa, zsupp",
+        "description": "Kapt\u00e1rpr\u00e9ssel k\u00e9sz\u00edtett hunor m\u00e9ret\u0171 zsupp-b\u00f3l k\u00e9sz\u00falt kapt\u00e1rfi\u00f3k.<br><b>Adom\u00e1nyoz\u00f3: Kirsch \u00c1bel Zirc<\/b>",
+        "photos": [
+            "uploads\/65f7262fa7f785.18563902_zsupp.jpg"
+        ]
+    },
+    "17": {
+        "name": "Rajfog\u00f3 gy\u00e9k\u00e9nykas",
+        "time": "1960",
+        "madeof": "gy\u00e9k\u00e9ny",
+        "description": "M\u00e9hrajok befog\u00e1s\u00e1ra haszn\u00e1lt\u00e1k.<br><b>Adom\u00e1nyoz\u00f3: Kirsch \u00c1bel Zirc<\/b>",
+        "photos": [
+            "uploads\/65f726e5585b45.57199374_zirc.jpg"
+        ]
+    }
+}

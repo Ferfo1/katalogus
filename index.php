@@ -48,6 +48,7 @@ ini_set('display_errors', 'Off');
             max-width: 100%;
             margin: auto;
         }
+
         .card img {
             width: 100%;
             height: auto;
@@ -98,47 +99,49 @@ ini_set('display_errors', 'Off');
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     $type = $row['type'];
-
+                    
                     if ($type == 'card') {
                         $sql = "SELECT * FROM `card` WHERE `code` = $code";
                         $result = $conn->query($sql);
-
+                    
                         if ($result->num_rows > 0) {
                             $row = $result->fetch_assoc();
                             $photos = json_decode($row['photos']);
                             if ($photos !== null) {
-                                echo '<div class="card" style="width: 95%;"><div id="carouselExampleControls" class="carousel slide" data-bs="carousel" data-bs-ride="false">
-                                        <div class="carousel-inner">';
+                                $carouselInner = '';
                                 foreach ($photos as $index => $photo) {
-                                    $active = $index === 0 ? 'active' : ''; 
+                                    $active = $index === 0 ? 'active' : '';
+                                    $carouselInner .= '
+                                        <div class="carousel-item ' . $active . '">
+                                            <img src="' . $photo . '" class="d-block w-100" alt="...">
+                                        </div>';
                                 }
-                                echo '</div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>';
+                                echo '<div class="card" style="width: 95%;">
+                                        <div id="carouselExampleControls" class="carousel slide" data-bs="carousel" data-bs-ride="false">
+                                            <div class="carousel-inner">' . $carouselInner . '</div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                    ';
                             } else {
                                 echo "Hiba történt a képek feldolgozásakor";
                             }
+                            
                             echo '
-                            <div class="carousel-item ' . $active . '">
-                                            <img src="' . $photo . '" class="d-block w-100" alt="...">
-                                          </div>
-                                    <div class="card-body">
-                                    
-                                        <h5 class="card-title">' . $row['name'] . '</h5>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">Készítés Ideje: ' . $row['manufacturing_time'] . '</li>
-                                            <li class="list-group-item">Anyag: ' . $row['material'] . '</li>
-                                            <li class="list-group-item">Leírás: ' . $row['description'] . '</li>
-                                        </ul>
-                                    </div>
-                                </div>';
+                                <div class="card-body">
+                                    <h5 class="card-title">' . $row['name'] . '</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Készítés Ideje: ' . $row['manufacturing_time'] . '</li>
+                                        <li class="list-group-item">Anyag: ' . $row['material'] . '</li>
+                                        <li class="list-group-item">Leírás: ' . $row['description'] . '</li>
+                                    </ul>
+                                </div></div>';
                         } else {
                             echo "Nincs ilyen kód a card táblában";
                         }
@@ -147,11 +150,13 @@ ini_set('display_errors', 'Off');
                     elseif ($type == 'quiz') {
                         $sql = "SELECT * FROM `quiz` WHERE `code` = $code ORDER BY `question_number` ASC";
                         $result = $conn->query($sql);
-
+                    
                         if ($result->num_rows > 0) {
                             $total_questions = $result->num_rows;
                             $correct_answers = 0;
-                            echo '<form method="post">'; 
+                    
+                            echo '<form method="post">';
+                    
                             while ($row = $result->fetch_assoc()) {
                                 echo '<div class="card">
                                         <div class="card-body">
@@ -170,16 +175,21 @@ ini_set('display_errors', 'Off');
                                 }
                                 echo '</div></div>';
                             }
+                    
                             echo '<button type="submit" class="btn btn-primary mt-3" name="checkAnswersBtn" id="checkAnswersBtn">Ellenőrzés</button>';
+                    
                             echo '</form>';
+                    
                             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkAnswersBtn'])) {
                                 $correct_answers = 0;
+                            
                                 foreach ($_POST['answer'] as $quiz_id => $selected_answer_id) {
                                     $sql = "SELECT `correct_id` FROM `quiz` WHERE `id` = $quiz_id";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         $row = $result->fetch_assoc();
                                         $correct_answer_id = $row['correct_id'];
+                            
                                         if ($selected_answer_id == $correct_answer_id) {
                                             $correct_answers++;
                                             echo '<script>document.getElementById("answer_' . $quiz_id . '_' . $selected_answer_id . '").nextElementSibling.style.color = "green";</script>';
@@ -189,8 +199,10 @@ ini_set('display_errors', 'Off');
                                         }
                                     }
                                 }
+                            
                                 echo '<p>Helyes válaszok száma: ' . $correct_answers . '</p>';
                             }
+
                         } else {
                             echo "Nincs ilyen kód a quiz táblában";
                         }

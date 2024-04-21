@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ERROR | E_PARSE); 
-ini_set('display_errors', 'Off'); 
+error_reporting(E_ERROR | E_PARSE);
+ini_set('display_errors', 'Off');
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -10,56 +10,6 @@ ini_set('display_errors', 'Off');
     <title>Méhészeti Katalógus</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-.bg-light {
-            background-color: #545a60 !important;
-        }
-        .navbar-light .navbar-nav .nav-link.active{
-            color: aliceblue;
-        }
-        .footer {
-            background-color: #f8f9fa;
-            text-align: center;
-            padding: 10px 0;
-        }
-        .card-container {
-            flex-grow: 1; 
-            margin-bottom: 20px; 
-        }
-        .d-flex {
-            min-height: 100vh; 
-            flex-direction: column; 
-        }
-        .carousel-item img {
-        max-height: auto; 
-        width: auto; 
-    }
-        .list-group-item input[type="radio"] {
-            transform: scale(1.5); 
-        }
-        .list-group-item label {
-            font-weight: bold; 
-            font-size: 18px; 
-        }
-        p {
-            font-size: large;
-        }
-        button[name="num"] {
-            width: 100px;
-            height: 100px;
-        }
-        button[name="submit"] {
-            height: 40px;
-        }
-        .card {
-        width: 100%; 
-        max-width: 500px; 
-        margin: auto; 
-        }
-        .card img {
-            max-width: 100%; 
-            height: 40; 
-        }
-
         .bg-light {
             background-color: #545a60 !important;
         }
@@ -72,39 +22,38 @@ ini_set('display_errors', 'Off');
             padding: 10px 0;
         }
         .card-container {
-            flex-grow: 1; 
-            margin-bottom: 20px; 
+            flex-grow: 1;
+            margin-bottom: 20px;
         }
         .d-flex {
-            min-height: 100vh; 
-            flex-direction: column; 
+            min-height: 100vh;
+            flex-direction: column;
         }
         .carousel-item img {
-            max-height: auto; 
-            width: auto; 
+            max-height: auto;
+            width: auto;
         }
         .list-group-item input[type="radio"] {
-            transform: scale(1.5); 
+            transform: scale(1.5);
         }
         .list-group-item label {
-            font-weight: bold; 
-            font-size: 18px; 
+            font-weight: bold;
+            font-size: 18px;
         }
         p {
             font-size: large;
         }
         .card {
-    width: auto; 
-    max-width: 100%;
-    margin: auto; 
-}
+            width: auto;
+            max-width: 100%;
+            margin: auto;
+        }
 
-.card img {
-    width: 100%; 
-    height: auto; 
-    max-height: 100%; 
-}
-
+        .card img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
     </style>
 </head>
 <body class="d-flex">
@@ -157,41 +106,42 @@ ini_set('display_errors', 'Off');
                     
                         if ($result->num_rows > 0) {
                             $row = $result->fetch_assoc();
-                            $photos = json_decode($row['photos']); 
-                            if ($photos !== null) { 
-                                echo '<div class="card" style="width: 95%;"><div id="carouselExampleControls" class="carousel slide" data-bs="carousel" data-bs-ride="false">
-                                        <div class="carousel-inner">';
-                                foreach ($photos as $teszt => $photo) {
-                                    $active = $teszt === 0 ? 'active' : ''; 
-                                   
+                            $photos = json_decode($row['photos']);
+                            if ($photos !== null) {
+                                $carouselInner = '';
+                                foreach ($photos as $index => $photo) {
+                                    $active = $index === 0 ? 'active' : '';
+                                    $carouselInner .= '
+                                        <div class="carousel-item ' . $active . '">
+                                            <img src="' . $photo . '" class="d-block w-100" alt="...">
+                                        </div>';
                                 }
-                                echo '</div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>';
+                                echo '<div class="card" style="width: 95%;">
+                                        <div id="carouselExampleControls" class="carousel slide" data-bs="carousel" data-bs-ride="false">
+                                            <div class="carousel-inner">' . $carouselInner . '</div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                    ';
                             } else {
                                 echo "Hiba történt a képek feldolgozásakor";
                             }
+                            
                             echo '
-                            <div class="carousel-item ' . $active . '">
-                                            <img src="' . $photo . '" class="d-block w-100" alt="...">
-                                          </div>
-                                    <div class="card-body">
-                                    
-                                        <h5 class="card-title">' . $row['name'] . '</h5>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">Készítés Ideje: ' . $row['manufacturing_time'] . '</li>
-                                            <li class="list-group-item">Anyag: ' . $row['material'] . '</li>
-                                            <li class="list-group-item">Leírás: ' . $row['description'] . '</li>
-                                        </ul>
-                                    </div>
-                                </div>';
+                                <div class="card-body">
+                                    <h5 class="card-title">' . $row['name'] . '</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Készítés Ideje: ' . $row['manufacturing_time'] . '</li>
+                                        <li class="list-group-item">Anyag: ' . $row['material'] . '</li>
+                                        <li class="list-group-item">Leírás: ' . $row['description'] . '</li>
+                                    </ul>
+                                </div></div>';
                         } else {
                             echo "Nincs ilyen kód a card táblában";
                         }
@@ -205,7 +155,7 @@ ini_set('display_errors', 'Off');
                             $total_questions = $result->num_rows;
                             $correct_answers = 0;
                     
-                            echo '<form method="post">'; 
+                            echo '<form method="post">';
                     
                             while ($row = $result->fetch_assoc()) {
                                 echo '<div class="card">
@@ -228,10 +178,10 @@ ini_set('display_errors', 'Off');
                     
                             echo '<button type="submit" class="btn btn-primary mt-3" name="checkAnswersBtn" id="checkAnswersBtn">Ellenőrzés</button>';
                     
-                            echo '</form>'; 
+                            echo '</form>';
                     
                             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkAnswersBtn'])) {
-                                $correct_answers = 0; 
+                                $correct_answers = 0;
                             
                                 foreach ($_POST['answer'] as $quiz_id => $selected_answer_id) {
                                     $sql = "SELECT `correct_id` FROM `quiz` WHERE `id` = $quiz_id";
@@ -311,8 +261,6 @@ ini_set('display_errors', 'Off');
             }
 
             $conn->close();
-
-            
             ?>
             </div>
         </div>

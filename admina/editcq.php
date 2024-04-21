@@ -1,5 +1,4 @@
 <?php
-// MySQL kapcsolódás
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,12 +6,10 @@ $database = "katalogus";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Ellenőrzés, hogy sikeres volt-e a kapcsolódás
 if ($conn->connect_error) {
     die("Nem sikerült kapcsolódni az adatbázishoz: " . $conn->connect_error);
 }
 
-// Funkció a kód típusának lekérdezésére a megadott kód alapján
 function getCodeType($code) {
     global $conn;
     $sql = "SELECT type FROM type WHERE code = ?";
@@ -26,7 +23,6 @@ function getCodeType($code) {
     return false;
 }
 
-// Funkció az adatok lekérdezésére a megadott kód alapján
 function getData($code, $type) {
     global $conn;
     if ($type === 'card') {
@@ -44,7 +40,6 @@ function getData($code, $type) {
     return false;
 }
 
-// Funkció az adatok frissítésére a megadott kód és típus alapján
 function updateData($code, $type, $data) {
     global $conn;
     if ($type === 'card') {
@@ -60,7 +55,6 @@ function updateData($code, $type, $data) {
     return $stmt->affected_rows > 0;
 }
 
-// Kód típusának lekérése, ha a felhasználó már beküldte a formot
 $codeType = null;
 $data = null;
 if (isset($_POST['code'])) {
@@ -69,7 +63,6 @@ if (isset($_POST['code'])) {
     $data = getData($code, $codeType);
 }
 
-// Adatok frissítése, ha a felhasználó már beküldte a módosított adatokat
 if (isset($_POST['update_data'])) {
     $code = $_POST['code'];
     $type = $_POST['type'];
@@ -110,7 +103,6 @@ if (isset($_POST['update_data'])) {
             <input type="hidden" name="code" value="<?= $code ?>">
             <input type="hidden" name="type" value="<?= $codeType ?>">
             <?php if ($codeType === 'card'): ?>
-                <!-- Kártya adatok szerkesztése -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Név</label>
                     <input type="text" class="form-control" id="name" name="card[name]" required>
@@ -132,7 +124,6 @@ if (isset($_POST['update_data'])) {
                     <input type="file" class="form-control" id="photos" name="card[photos][]" multiple required>
                 </div>
             <?php elseif ($codeType === 'quiz'): ?>
-                <!-- Kvíz adatok szerkesztése -->
                 <div class="mb-3">
                     <label for="question" class="form-label">Kérdés</label>
                     <input type="text" class="form-control" id="question" name="quiz[question]" required>

@@ -1,6 +1,4 @@
- <!-- List of codes -->
 <?php
- // MySQL kapcsolódás
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -8,7 +6,6 @@ $database = "katalogus";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Ellenőrzés, hogy sikeres volt-e a kapcsolódás
 if ($conn->connect_error) {
     die("Nem sikerült kapcsolódni az adatbázishoz: " . $conn->connect_error);
 }?>
@@ -30,12 +27,10 @@ if ($conn->connect_error) {
     </thead>
     <tbody>
         <?php
-        // Fetch all codes from the type table
         $sql = "SELECT * FROM type";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            // Output data of each row
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<th scope='row'></th>";
@@ -52,18 +47,15 @@ if ($conn->connect_error) {
 </table>
 
 <?php
-// Delete a code and its related data
 if (isset($_GET['delete_code'])) {
     $code = $_GET['delete_code'];
 
-    // Fetch all questions related to the code
     $sql = "SELECT id FROM quiz WHERE code = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $code);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Delete all answers related to each question
     while ($row = $result->fetch_assoc()) {
         $sql = "DELETE FROM answer WHERE quiz_id = ?";
         $stmt = $conn->prepare($sql);
@@ -71,19 +63,16 @@ if (isset($_GET['delete_code'])) {
         $stmt->execute();
     }
 
-    // Delete from type table
     $sql = "DELETE FROM type WHERE code = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $code);
     $stmt->execute();
 
-    // Delete from card table
     $sql = "DELETE FROM card WHERE code = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $code);
     $stmt->execute();
 
-    // Delete from quiz table
     $sql = "DELETE FROM quiz WHERE code = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $code);

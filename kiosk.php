@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ERROR | E_PARSE); // Csak az E_ERROR és E_PARSE hibák jelenjenek meg
-ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
+error_reporting(E_ERROR | E_PARSE); 
+ini_set('display_errors', 'Off'); 
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -22,23 +22,23 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
             padding: 10px 0;
         }
         .card-container {
-            flex-grow: 1; /* Az oszlop teljes magasságú legyen */
-            margin-bottom: 20px; /* Üres hely a kártya és a footer között */
+            flex-grow: 1; 
+            margin-bottom: 20px; 
         }
         .d-flex {
-            min-height: 100vh; /* A konténer teljes magasságú legyen */
-            flex-direction: column; /* Az elemek egy oszlopban legyenek */
+            min-height: 100vh; 
+            flex-direction: column; 
         }
         .carousel-item img {
-        max-height: auto; /* Maximális magasság beállítása */
-        width: auto; /* Automatikus szélesség */
+        max-height: auto; 
+        width: auto; 
     }
         .list-group-item input[type="radio"] {
-            transform: scale(1.5); /* Make radio buttons larger */
+            transform: scale(1.5); 
         }
         .list-group-item label {
-            font-weight: bold; /* Make answer labels bold */
-            font-size: 18px; /* Increase font size of answer labels */
+            font-weight: bold; 
+            font-size: 18px; 
         }
         p {
             font-size: large;
@@ -51,13 +51,13 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
             height: 40px;
         }
         .card {
-        width: 100%; /* A kártya teljes szélességű legyen */
-        max-width: 500px; /* Maximális szélesség beállítása */
-        margin: auto; /* Középre igazítás */
+        width: 100%; 
+        max-width: 500px; 
+        margin: auto; 
         }
         .card img {
-            max-width: 100%; /* A kép maximális szélessége a kártya szélességéhez igazodik */
-            height: 40; /* Automatikus magasság beállítása a képarány megtartása érdekében */
+            max-width: 100%; 
+            height: 40; 
         }
 
         .bg-light {
@@ -72,38 +72,37 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
             padding: 10px 0;
         }
         .card-container {
-            flex-grow: 1; /* Az oszlop teljes magasságú legyen */
-            margin-bottom: 20px; /* Üres hely a kártya és a footer között */
+            flex-grow: 1; 
+            margin-bottom: 20px; 
         }
         .d-flex {
-            min-height: 100vh; /* A konténer teljes magasságú legyen */
-            flex-direction: column; /* Az elemek egy oszlopban legyenek */
+            min-height: 100vh; 
+            flex-direction: column; 
         }
         .carousel-item img {
-            max-height: auto; /* Maximális magasság beállítása */
-            width: auto; /* Automatikus szélesség */
+            max-height: auto; 
+            width: auto; 
         }
         .list-group-item input[type="radio"] {
-            transform: scale(1.5); /* Make radio buttons larger */
+            transform: scale(1.5); 
         }
         .list-group-item label {
-            font-weight: bold; /* Make answer labels bold */
-            font-size: 18px; /* Increase font size of answer labels */
+            font-weight: bold; 
+            font-size: 18px; 
         }
         p {
             font-size: large;
         }
         .card {
-    width: auto; /* Kártya szélessége automatikus */
-    max-width: 100%; /* Maximális szélesség beállítása */
-    margin: auto; /* Középre igazítás */
-
+    width: auto; 
+    max-width: 100%;
+    margin: auto; 
 }
 
 .card img {
-    width: 100%; /* A kép szélessége a kártya szélességéhez igazodik */
-    height: auto; /* Automatikus magasság beállítása a képarány megtartása érdekében */
-    max-height: 100%; /* Maximális magasság beállítása, ha a kép magasabb lenne, mint a kártya */
+    width: 100%; 
+    height: auto; 
+    max-height: 100%; 
 }
 
     </style>
@@ -121,7 +120,7 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="teszt.php">Új kód megadása</a>
+                        <a class="nav-link active" aria-current="page" href="kiosk.php">Új kód megadása</a>
                     </li>
                 </ul>
             </div>
@@ -132,7 +131,6 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
         <div class="row justify-content-center mt-5">
             <div class="col-md-8 col-lg-6">
             <?php
-            // Kapcsolódás az adatbázishoz
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -140,14 +138,12 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Ellenőrizzük a kapcsolatot
             if ($conn->connect_error) {
                 die("Sikertelen kapcsolódás az adatbázishoz: " . $conn->connect_error);
             }
 
             if(isset($_GET['code'])) {
                 $code = $_GET['code'];
-                // Ellenőrizzük a kódot a type táblában
                 $sql = "SELECT * FROM `type` WHERE `code` = $code";
                 $result = $conn->query($sql);
 
@@ -155,22 +151,18 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
                     $row = $result->fetch_assoc();
                     $type = $row['type'];
                     
-                    // Betöltjük az adatokat a megfelelő táblából a kód típusa alapján
                     if ($type == 'card') {
-                        // Betöltjük a kártya adatait a card táblából
                         $sql = "SELECT * FROM `card` WHERE `code` = $code";
                         $result = $conn->query($sql);
                     
                         if ($result->num_rows > 0) {
                             $row = $result->fetch_assoc();
-                            // Képek feldolgozása a Carousel-hoz
-                            $photos = json_decode($row['photos']); // JSON string átalakítása PHP tömbbé
-                            if ($photos !== null) { // Ellenőrzés, hogy a JSON dekódolása sikeres volt-e
-                                // Képek megjelenítése a Carousel-ben
+                            $photos = json_decode($row['photos']); 
+                            if ($photos !== null) { 
                                 echo '<div class="card" style="width: 95%;"><div id="carouselExampleControls" class="carousel slide" data-bs="carousel" data-bs-ride="false">
                                         <div class="carousel-inner">';
                                 foreach ($photos as $teszt => $photo) {
-                                    $active = $teszt === 0 ? 'active' : ''; // Az első kép lesz aktív
+                                    $active = $teszt === 0 ? 'active' : ''; 
                                    
                                 }
                                 echo '</div>
@@ -186,7 +178,6 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
                             } else {
                                 echo "Hiba történt a képek feldolgozásakor";
                             }
-                            // További kártyaadatok megjelenítése
                             echo '
                             <div class="carousel-item ' . $active . '">
                                             <img src="' . $photo . '" class="d-block w-100" alt="...">
@@ -207,7 +198,6 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
                     }
                     
                     elseif ($type == 'quiz') {
-                        // Betöltjük a quiz adatait a quiz táblából
                         $sql = "SELECT * FROM `quiz` WHERE `code` = $code ORDER BY `question_number` ASC";
                         $result = $conn->query($sql);
                     
@@ -215,14 +205,12 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
                             $total_questions = $result->num_rows;
                             $correct_answers = 0;
                     
-                            echo '<form method="post">'; // Forma megnyitása az összes kérdés és válasz megjelenítése előtt
+                            echo '<form method="post">'; 
                     
                             while ($row = $result->fetch_assoc()) {
-                                // Quiz adatok feldolgozása és megjelenítése
                                 echo '<div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">' . $row['question'] . '</h5>';
-                                // Betöltjük a válaszokat a válasz táblából
                                 $quiz_id = $row['id'];
                                 $sql_answers = "SELECT * FROM `answer` WHERE `quiz_id` = $quiz_id";
                                 $result_answers = $conn->query($sql_answers);
@@ -240,12 +228,11 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
                     
                             echo '<button type="submit" class="btn btn-primary mt-3" name="checkAnswersBtn" id="checkAnswersBtn">Ellenőrzés</button>';
                     
-                            echo '</form>'; // Forma lezárása az összes kérdés és válasz megjelenítése után
+                            echo '</form>'; 
                     
                             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkAnswersBtn'])) {
-                                $correct_answers = 0; // Helyes válaszok számlálója
+                                $correct_answers = 0; 
                             
-                                // Ellenőrizzük az összes kérdésre adott választ
                                 foreach ($_POST['answer'] as $quiz_id => $selected_answer_id) {
                                     $sql = "SELECT `correct_id` FROM `quiz` WHERE `id` = $quiz_id";
                                     $result = $conn->query($sql);
@@ -253,20 +240,16 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
                                         $row = $result->fetch_assoc();
                                         $correct_answer_id = $row['correct_id'];
                             
-                                        // Ha a válasz helyes, növeljük a helyes válaszok számát és beállítjuk a színét zöldre
                                         if ($selected_answer_id == $correct_answer_id) {
                                             $correct_answers++;
                                             echo '<script>document.getElementById("answer_' . $quiz_id . '_' . $selected_answer_id . '").nextElementSibling.style.color = "green";</script>';
                                         } else {
-                                            // Ha a válasz helytelen, a válasz színét pirosra állítjuk
                                             echo '<script>document.getElementById("answer_' . $quiz_id . '_' . $selected_answer_id . '").nextElementSibling.style.color = "red";</script>';
-                                            // A helyes választ is zöldre állítjuk
                                             echo '<script>document.getElementById("answer_' . $quiz_id . '_' . $correct_answer_id . '").nextElementSibling.style.color = "green";</script>';
                                         }
                                     }
                                 }
                             
-                                // Helyes válaszok számának megjelenítése
                                 echo '<p>Helyes válaszok száma: ' . $correct_answers . '</p>';
                             }
 
@@ -281,8 +264,7 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
                     echo "Nincs ilyen kód a type táblában";
                 }
             } else {
-                // A felhasználó még nem adott meg kódot
-                echo '<form action="teszt.php" method="get">
+                echo '<form action="kiosk.php" method="get">
                 <div class="input-group-lg mb-3">
                     <input type="number" class="form-control" placeholder="Írd be a kódot" aria-label="Írd be a kódot" aria-describedby="button-addon2" name="code">
                 </div>
@@ -328,7 +310,6 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
             </script>';
             }
 
-            // Kapcsolat lezárása
             $conn->close();
 
             
@@ -343,12 +324,10 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
         </div>
     </footer>
     <script>
-        // Válaszok soraira kattintva választási művelet végrehajtása
         const answerRows = document.querySelectorAll('.list-group-item');
         answerRows.forEach(row => {
             row.addEventListener('click', (event) => {
                 const clickedElement = event.target;
-                // Csak akkor válasszuk ki az inputot, ha az a körvonala volt a kattintásnak
                 if (clickedElement.tagName !== 'INPUT') {
                     const radioInput = row.querySelector('input[type="radio"]');
                     radioInput.checked = true;

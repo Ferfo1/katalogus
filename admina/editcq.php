@@ -61,7 +61,8 @@ if (isset($_POST['update_data'])) {
         // Az adatok frissítése kártya típus esetén
         $sql = "UPDATE card SET name=?, manufacturing_time=?, material=?, description=? WHERE code=?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $data['name'], $data['time'], $data['madeof'], $data['description'], $code);
+        $formatted_description = str_replace(['<p>', '</p>'], '', $data['description']);
+        $stmt->bind_param("sssss", $data['name'], $data['time'], $data['madeof'], $formatted_description, $code);
         $stmt->execute();
         if ($stmt->affected_rows > 0) {
             echo "Az adatok sikeresen frissültek.";
@@ -84,7 +85,16 @@ if (isset($_POST['update_data'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adatok módosítása</title>
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <style>.button {
+        background-color: #155DE9;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        font-family: 'Arial';
+      }</style>
 </head>
 <body>
     <div class="container">
@@ -121,44 +131,21 @@ if (isset($_POST['update_data'])) {
                     <label for="description" class="form-label">Leírás</label>
                     <textarea class="form-control" id="description" name="card[description]" required><?= isset($data['description']) ? $data['description'] : '' ?></textarea>
                 </div>
-                <button type="button" onclick="applyStyle('underline')">Alhúzás</button>
-<button type="button" onclick="applyStyle('italic')">Dőlt betű</button>
-<button type="button" onclick="applyStyle('bold')">Vastag betű</button>
-<button type="button" onclick="applyStyle('strikethrough')">Áthúzott betű</button>
                 <button type="submit" class="btn btn-primary" name="update_data">Adatok mentése</button>
-                <script>
-    function applyStyle(style) {
-        var description = document.getElementById('description');
-        var start = description.selectionStart;
-        var end = description.selectionEnd;
+                
+<script type="text/javascript">
+      window.onload = () => {
+        CKEDITOR.replace("description");
+      };
 
-        var beforeText = description.value.substring(0, start);
-        var selectedText = description.value.substring(start, end);
-        var afterText = description.value.substring(end, description.value.length);
-
-        var styledText = '';
-        switch (style) {
-            case 'underline':
-                styledText = '<u>' + selectedText + '</u>';
-                break;
-            case 'italic':
-                styledText = '<i>' + selectedText + '</i>';
-                break;
-            case 'bold':
-                styledText = '<b>' + selectedText + '</b>';
-                break;
-            case 'strikethrough':
-                styledText = '<strike>' + selectedText + '</strike>';
-                break;
-        }
-
-        description.value = beforeText + styledText + afterText;
-    }
-</script>
+      function sendText() {
+        window.parent.postMessage(CKEDITOR.instances.CK1.getData(), "*");
+      }
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <?php endif; ?>
         </form>
         <?php endif; ?>
     </div>
 </body>
 </html>
- 

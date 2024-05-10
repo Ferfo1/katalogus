@@ -4,16 +4,22 @@ ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
 ?>
 <?php
 // MySQL kapcsolódás
-$servername = "localhost";
+$servername = "192.168.8.179:6033";
 $username = "root";
-$password = "";
+$password = "oC.eC]9]oqWo3dY5";
 $database = "katalogus";
+$ifcard = false;
+$ifcard1 = false;
+$ifcard2 = false;
+$ifcard3 = false;
+$ifcard4 = false;
+$ifcard5 = false;
 
 $conn = new mysqli($servername, $username, $password, $database);
 
 // Ellenőrzés, hogy sikeres volt-e a kapcsolódás
 if ($conn->connect_error) {
-    die("Nem sikerült kapcsolódni az adatbázishoz: " . $conn->connect_error);
+    die("Sajnos hiba történt. A hibakód: 10" . $conn->connect_error);
 }
 
 // Az új adatok hozzáadása a megfelelő táblákhoz
@@ -30,9 +36,9 @@ if (isset($_POST['add_code'])) {
 
         // Ellenőrzés, hogy sikeres volt-e a beszúrás
         if ($stmt->affected_rows > 0) {
-            echo "A típus sikeresen hozzá lett adva az adatbázishoz.";
+            $ifcard = true;
         } else {
-            echo "Hiba történt a típus hozzáadása során.";
+            echo "Sajnos hiba történt. A hibakód: 11";
         }
 
         $stmt->close();
@@ -43,7 +49,8 @@ if (isset($_POST['add_code'])) {
             $time = $_POST['time'];
             $madeof = $_POST['madeof'];
             $description = $_POST['description'];
-            $formatted_description = str_replace(['<p>', '</p>'], '', $description);
+            $formatted_description = str_replace(['<p>'], '', $description);
+            $another_formatted_description = str_replace(['</p>'], '<br>', $formatted_description);
             $photos = array();
             $uploadDir = '../uploads/';
 
@@ -57,25 +64,36 @@ if (isset($_POST['add_code'])) {
                     $file_destination = $uploadDir . uniqid('', true) . '_' . $file_name;
                     if (move_uploaded_file($file_tmp, $file_destination)) {
                         $photos[] = $file_destination;
+                        $ifcard1 = true;
                     } else {
-                        echo "Hiba a kép feltöltésekor: " . $_FILES['photos']['error'][$key];
+                        echo "Hiba a kép feltöltésekor: " . $_FILES['photos']['error'][$key].  "Hibakód: 12 ";
                     }
                 } else {
-                    echo "Nem megfelelő fájltípus: " . $file_type;
+                    echo "Nem megfelelő fájltípus: " . $file_type . "Hibakód: 13 ";
                 }
             }
 
             // Beszúrás a card táblába
             $sql = "INSERT INTO card (code, name, manufacturing_time, material, description, photos) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssssss", $code, $name, $time, $madeof, $formatted_description, json_encode($photos));
+            $stmt->bind_param("ssssss", $code, $name, $time, $madeof, $another_formatted_description, json_encode($photos));
             $stmt->execute();
 
             // Ellenőrzés, hogy sikeres volt-e a beszúrás
             if ($stmt->affected_rows > 0) {
-                echo "A kártya sikeresen hozzá lett adva az adatbázishoz.";
+                $ifcard2 = true;
+                if ($ifcard && $ifcard1 && $ifcard2) {
+                    echo '<div class="alert alert-success" role="alert">
+                    A művelet sikeres: Kártya hozzáadása
+                  </div>';
+                    echo '<script>window.location.href = "https://katalogus.meheszmuzeum.hu/admina/addcq.php";</script>';
+
+                }
+                else {
+                    echo "Sajnos hiba történt. A hibakód: 15";
+                }
             } else {
-                echo "Hiba történt a kártya hozzáadása során.";
+                echo "Adatbázis hiba! Hibakód: 14";
             }
 
             $stmt->close();
@@ -119,12 +137,12 @@ if (isset($_POST['add_code'])) {
                             }
                         }
                     } else {
-                        echo "An error occurred while adding the quiz.";
+                        echo "Adatbázishiba! Hibakód: 14";
                     }
                 }
             }
         } else {
-            echo "An error occurred while adding the type.";
+            echo "Adatbázishiba! Hibakód: 14";
         }
 
         $stmt->close();

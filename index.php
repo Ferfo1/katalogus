@@ -8,6 +8,7 @@ ini_set('display_errors', 'Off');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Méhészeti Katalógus</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         .bg-light {
@@ -60,7 +61,7 @@ ini_set('display_errors', 'Off');
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="logo.png" alt="" width="100" height="100">
+                <img src="white.png" alt="" width="100" height="100">
             </a>
             <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,15 +81,15 @@ ini_set('display_errors', 'Off');
         <div class="row justify-content-center mt-5">
             <div class="col-md-8 col-lg-6">
             <?php
-            $servername = "localhost";
+            $servername = "192.168.8.179:6033";
             $username = "root";
-            $password = "";
+            $password = "oC.eC]9]oqWo3dY5";
             $dbname = "katalogus";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
             if ($conn->connect_error) {
-                die("Sikertelen kapcsolódás az adatbázishoz: " . $conn->connect_error);
+                die("Sajnos hiba történt. A hibakód: 1" . $conn->connect_error);
             }
 
             if(isset($_GET['code'])) {
@@ -130,7 +131,7 @@ ini_set('display_errors', 'Off');
                                         </div>
                                     ';
                             } else {
-                                echo "Hiba történt a képek feldolgozásakor";
+                                echo "Sajnos hiba történt. A hibakód: 2";
                             }
                             
                             echo '
@@ -143,7 +144,7 @@ ini_set('display_errors', 'Off');
                                     </ul>
                                 </div></div>';
                         } else {
-                            echo "Nincs ilyen kód a card táblában";
+                            echo "Nincs találat vagy hibás szám! Hibakód: 3";
                         }
                     }
                     
@@ -204,14 +205,14 @@ ini_set('display_errors', 'Off');
                             }
 
                         } else {
-                            echo "Nincs ilyen kód a quiz táblában";
+                            echo "Nincs találat vagy hibás szám! Hibakód: 3";
                         }
                     }
                      else {
-                        echo "Ismeretlen kód típus: $type";
+                        echo "Nincs találat vagy hibás szám! Hibakód: 4";
                     }
                 } else {
-                    echo "Nincs ilyen kód a type táblában";
+                    echo "Nincs találat vagy hibás szám! Hibakód: 3";
                 }
             } else {
                 echo '<form action="index.php" method="get">

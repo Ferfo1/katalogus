@@ -10,6 +10,56 @@ ini_set('display_errors', 'Off');
     <title>Méhészeti Katalógus</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
+.bg-light {
+            background-color: #545a60 !important;
+        }
+        .navbar-light .navbar-nav .nav-link.active{
+            color: aliceblue;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .card-container {
+            flex-grow: 1; /* Az oszlop teljes magasságú legyen */
+            margin-bottom: 20px; /* Üres hely a kártya és a footer között */
+        }
+        .d-flex {
+            min-height: 100vh; /* A konténer teljes magasságú legyen */
+            flex-direction: column; /* Az elemek egy oszlopban legyenek */
+        }
+        .carousel-item img {
+        max-height: auto; /* Maximális magasság beállítása */
+        width: auto; /* Automatikus szélesség */
+    }
+        .list-group-item input[type="radio"] {
+            transform: scale(1.5); /* Make radio buttons larger */
+        }
+        .list-group-item label {
+            font-weight: bold; /* Make answer labels bold */
+            font-size: 18px; /* Increase font size of answer labels */
+        }
+        p {
+            font-size: large;
+        }
+        button[name="num"] {
+            width: 100px;
+            height: 100px;
+        }
+        button[name="submit"] {
+            height: 40px;
+        }
+        .card {
+        width: 100%; /* A kártya teljes szélességű legyen */
+        max-width: 500px; /* Maximális szélesség beállítása */
+        margin: auto; /* Középre igazítás */
+        }
+        .card img {
+            max-width: 100%; /* A kép maximális szélessége a kártya szélességéhez igazodik */
+            height: 40; /* Automatikus magasság beállítása a képarány megtartása érdekében */
+        }
+
         .bg-light {
             background-color: #545a60 !important;
         }
@@ -22,45 +72,47 @@ ini_set('display_errors', 'Off');
             padding: 10px 0;
         }
         .card-container {
-            flex-grow: 1;
-            margin-bottom: 20px;
+            flex-grow: 1; /* Az oszlop teljes magasságú legyen */
+            margin-bottom: 20px; /* Üres hely a kártya és a footer között */
         }
         .d-flex {
-            min-height: 100vh;
-            flex-direction: column;
+            min-height: 100vh; /* A konténer teljes magasságú legyen */
+            flex-direction: column; /* Az elemek egy oszlopban legyenek */
         }
         .carousel-item img {
-            max-height: auto;
-            width: auto;
+            max-height: auto; /* Maximális magasság beállítása */
+            width: auto; /* Automatikus szélesség */
         }
         .list-group-item input[type="radio"] {
-            transform: scale(1.5);
+            transform: scale(1.5); /* Make radio buttons larger */
         }
         .list-group-item label {
-            font-weight: bold;
-            font-size: 18px;
+            font-weight: bold; /* Make answer labels bold */
+            font-size: 18px; /* Increase font size of answer labels */
         }
         p {
             font-size: large;
         }
         .card {
-            width: auto;
-            max-width: 100%;
-            margin: auto;
-        }
+    width: auto; /* Kártya szélessége automatikus */
+    max-width: 100%; /* Maximális szélesség beállítása */
+    margin: auto; /* Középre igazítás */
 
-        .card img {
-            width: 100%;
-            height: auto;
-            max-height: 100%;
-        }
+}
+
+.card img {
+    width: 100%; /* A kép szélessége a kártya szélességéhez igazodik */
+    height: auto; /* Automatikus magasság beállítása a képarány megtartása érdekében */
+    max-height: 100%; /* Maximális magasság beállítása, ha a kép magasabb lenne, mint a kártya */
+}
+
     </style>
 </head>
 <body class="d-flex">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="logo.png" alt="" width="100" height="100">
+                <img src="white.png" alt="" width="100" height="100">
             </a>
             <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,15 +132,15 @@ ini_set('display_errors', 'Off');
         <div class="row justify-content-center mt-5">
             <div class="col-md-8 col-lg-6">
             <?php
-            $servername = "localhost";
+            $servername = "192.168.8.179:6033";
             $username = "root";
-            $password = "";
+            $password = "oC.eC]9]oqWo3dY5";
             $dbname = "katalogus";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
             if ($conn->connect_error) {
-                die("Sikertelen kapcsolódás az adatbázishoz: " . $conn->connect_error);
+                die("Sajnos hiba történt. A hibakód: 5" . $conn->connect_error);
             }
 
             if(isset($_GET['code'])) {
@@ -130,7 +182,7 @@ ini_set('display_errors', 'Off');
                                         </div>
                                     ';
                             } else {
-                                echo "Hiba történt a képek feldolgozásakor";
+                                echo "Sajnos hiba történt. A hibakód: 9";
                             }
                             
                             echo '
@@ -143,7 +195,7 @@ ini_set('display_errors', 'Off');
                                     </ul>
                                 </div></div>';
                         } else {
-                            echo "Nincs ilyen kód a card táblában";
+                            echo "Nincs találat vagy hibás szám! Hibakód: 7";
                         }
                     }
                     
@@ -204,14 +256,14 @@ ini_set('display_errors', 'Off');
                             }
 
                         } else {
-                            echo "Nincs ilyen kód a quiz táblában";
+                            echo "Nincs találat vagy hibás szám! Hibakód: 7";
                         }
                     }
                      else {
-                        echo "Ismeretlen kód típus: $type";
+                        echo "Nincs találat vagy hibás szám! Hibakód: 7";
                     }
                 } else {
-                    echo "Nincs ilyen kód a type táblában";
+                    echo "Nincs találat vagy hibás szám! Hibakód: 7";
                 }
             } else {
                 echo '<form action="kiosk.php" method="get">

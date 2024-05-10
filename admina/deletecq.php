@@ -1,9 +1,9 @@
  <!-- List of codes -->
-<?php
+ <?php
  // MySQL kapcsolódás
-$servername = "localhost";
+$servername = "192.168.8.179:6033";
 $username = "root";
-$password = "";
+$password = "oC.eC]9]oqWo3dY5";
 $database = "katalogus";
 
 $conn = new mysqli($servername, $username, $password, $database);
@@ -104,6 +104,8 @@ if (isset($_GET['delete_code'])) {
     $stmt->bind_param("s", $code);
     $stmt->execute();
 
-    echo "The code and its related data were successfully deleted.";
+    echo '<script>window.location.href = "https://katalogus.meheszmuzeum.hu/admina/deletecq.php";</script>';
+    
+    
 }
 ?>

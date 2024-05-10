@@ -1,8 +1,8 @@
 <?php
 // MySQL kapcsolódás
-$servername = "localhost";
+$servername = "192.168.8.179:6033";
 $username = "root";
-$password = "";
+$password = "oC.eC]9]oqWo3dY5";
 $database = "katalogus";
 
 $conn = new mysqli($servername, $username, $password, $database);
@@ -61,8 +61,9 @@ if (isset($_POST['update_data'])) {
         // Az adatok frissítése kártya típus esetén
         $sql = "UPDATE card SET name=?, manufacturing_time=?, material=?, description=? WHERE code=?";
         $stmt = $conn->prepare($sql);
-        $formatted_description = str_replace(['<p>', '</p>'], '', $data['description']);
-        $stmt->bind_param("sssss", $data['name'], $data['time'], $data['madeof'], $formatted_description, $code);
+        $formatted_description = str_replace(['<p>'], '', $data['description']);
+        $another_formatted_description = str_replace(['</p>'], '<br>', $formatted_description);
+        $stmt->bind_param("sssss", $data['name'], $data['time'], $data['madeof'], $another_formatted_description, $code);
         $stmt->execute();
         if ($stmt->affected_rows > 0) {
             echo "Az adatok sikeresen frissültek.";

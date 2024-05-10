@@ -56,7 +56,7 @@ if ($conn->connect_error) {
                 } else {
                     echo "<td>" . $row["name"] . "</td>";
                 }
-                echo "<td><a href='?delete_code=" . $row["code"] . "' class='btn btn-danger'>Törlés</a></td>";
+                echo "<td><a href='?delete_code=" . $row["code"] . "' class='btn btn-danger' onclick='return confirm(\"Biztosan törölni szeretné?\")'>Törlés</a></td>";
                 echo "</tr>";
             }
         } else {

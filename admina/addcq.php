@@ -1,9 +1,7 @@
 ﻿<?php
-error_reporting(E_ERROR | E_PARSE); // Csak az E_ERROR és E_PARSE hibák jelenjenek meg
-ini_set('display_errors', 'Off'); // A hibák ne jelenjenek meg a kimeneten
-?>
-<?php
-// MySQL kapcsolódás
+error_reporting(E_ERROR | E_PARSE);
+ini_set('display_errors', 'Off');
+
 $servername = "192.168.8.179:6033";
 $username = "root";
 $password = "oC.eC]9]oqWo3dY5";
@@ -17,24 +15,20 @@ $ifcard5 = false;
 
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Ellenőrzés, hogy sikeres volt-e a kapcsolódás
 if ($conn->connect_error) {
     die("Sajnos hiba történt. A hibakód: 10" . $conn->connect_error);
 }
 
-// Az új adatok hozzáadása a megfelelő táblákhoz
 if (isset($_POST['add_code'])) {
     if (isset($_POST['type']) && ($_POST['type'] === 'card' || $_POST['type'] === 'quiz')) {
         $type = $_POST['type'];
         $code = $_POST['code'];
 
-        // Beszúrás a type táblába
         $sql = "INSERT INTO type (code, type) VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $code, $type);
         $stmt->execute();
 
-        // Ellenőrzés, hogy sikeres volt-e a beszúrás
         if ($stmt->affected_rows > 0) {
             $ifcard = true;
         } else {
@@ -44,7 +38,6 @@ if (isset($_POST['add_code'])) {
         $stmt->close();
 
         if ($type === 'card') {
-            // Kártya adatok feldolgozása és beszúrása
             $name = $_POST['name'];
             $time = $_POST['time'];
             $madeof = $_POST['madeof'];
@@ -73,13 +66,11 @@ if (isset($_POST['add_code'])) {
                 }
             }
 
-            // Beszúrás a card táblába
             $sql = "INSERT INTO card (code, name, manufacturing_time, material, description, photos) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssss", $code, $name, $time, $madeof, $another_formatted_description, json_encode($photos));
             $stmt->execute();
 
-            // Ellenőrzés, hogy sikeres volt-e a beszúrás
             if ($stmt->affected_rows > 0) {
                 $ifcard2 = true;
                 if ($ifcard && $ifcard1 && $ifcard2) {
@@ -102,30 +93,25 @@ if (isset($_POST['add_code'])) {
             for ($i = 1; $i <= 6; $i++) {
                 $question = $_POST["question$i"];
                 if (!empty($question)) {
-                    // Insert into quiz table
                     $sql = "INSERT INTO quiz (question, question_number, code) VALUES (?, ?, ?)";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("sis", $question, $i, $code);
                     $stmt->execute();
 
-                    // Check if the insertion was successful
                     if ($stmt->affected_rows > 0) {
                         echo '<div class="alert alert-success" role="alert">
                         A művelet sikeres: Kérdés hozzáadása
                       </div>';
-                        $question_id = $stmt->insert_id; // Store the ID of the newly inserted question
+                        $question_id = $stmt->insert_id;
 
-                        // Process and insert answers into the answer table
                         for ($j = 1; $j <= 4; $j++) {
                             $answer = $_POST["answer{$i}_{$j}"];
                             if (!empty($answer)) {
-                                // Insert into answer table
                                 $sql = "INSERT INTO answer (text, quiz_id) VALUES (?, ?)";
                                 $stmt = $conn->prepare($sql);
                                 $stmt->bind_param("si", $answer, $question_id);
                                 $stmt->execute();
 
-                                // If this is the correct answer, update the correct_id in the quiz table
                                 if ($j == $_POST["correct_answer{$i}"]) {
                                     $correct_id = $conn->insert_id;
 
@@ -147,8 +133,6 @@ if (isset($_POST['add_code'])) {
 
         $stmt->close();
     }}
-
-// MySQL kapcsolat bezárása
 
 ?>
 
@@ -205,15 +189,7 @@ if (isset($_POST['add_code'])) {
             <div class="mb-3 card-section">
                 <label for="description" class="form-label">Leírás</label>
                 <textarea class="form-control" id="CK1" name="description" rows="3"></textarea>
-                
-  
-    <!-- <textarea name="editor1" id="CK1"></textarea>
-    <br>
-    <button class="button" onclick="sendText()">Submit text</button> -->
             </div>
-            
-
-
             <div class="mb-3 card-section">
                 <label for="photos" class="form-label">Fotók feltöltése</label>
                 <input type="file" class="form-control" id="photos" name="photos[]" multiple>
@@ -251,7 +227,6 @@ if (isset($_POST['add_code'])) {
         </form>
     </div>
     <script>
-        // Elem típusának változtatásakor megjeleníti vagy elrejti a megfelelő mezőket
         document.getElementById('type').addEventListener('change', function () {
             var type = this.value;
             if (type === 'card') {

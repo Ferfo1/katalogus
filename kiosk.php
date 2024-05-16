@@ -134,7 +134,7 @@ ini_set('display_errors', 'Off');
             <?php
             $servername = "192.168.8.179:6033";
             $username = "root";
-            $password = "oC.eC]9]oqWo3dY5";
+            $password = "thedatabasepassword";
             $dbname = "katalogus";
 
             $conn = new mysqli($servername, $username, $password, $dbname);

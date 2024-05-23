@@ -2,7 +2,7 @@
 // MySQL kapcsolódás
 $servername = "192.168.8.179:6033";
 $username = "root";
-$password = "thedatabasepassword";
+$password = "passwd";
 $database = "katalogus";
 
 $conn = new mysqli($servername, $username, $password, $database);

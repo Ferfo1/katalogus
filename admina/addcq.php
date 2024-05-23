@@ -1,10 +1,9 @@
 ﻿<?php
-error_reporting(E_ERROR | E_PARSE);
-ini_set('display_errors', 'Off');
+
 
 $servername = "192.168.8.179:6033";
 $username = "root";
-$password = "thedatabasepassword";
+$password = "passwd";
 $database = "katalogus";
 $ifcard = false;
 $ifcard1 = false;

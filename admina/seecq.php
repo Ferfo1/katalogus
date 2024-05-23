@@ -18,7 +18,7 @@ if ($conn->connect_error) {
     <title>admina Panel</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>
- <h2>admina Panel: Törlés</h2>
+ <h2>admina Panel: Hozzáadott kódok megtekintése</h2>
 <table class="table">
     <thead>
         <tr>
@@ -42,7 +42,7 @@ if ($conn->connect_error) {
                 echo "<td>" . $row["code"] . "</td>";
                 echo "<td>" . $row["type"] . "</td>";
                 if ($row["type"] == "quiz") {
-                    echo "<td>Nincs Adat!</td>";
+                    echo "<td>quiz</td>";
                 } elseif ($row["type"] == "card") {
                     // Fetch the name from the card table
                     $cardSql = "SELECT name FROM card WHERE code = '" . $row["code"] . "'";
@@ -56,8 +56,7 @@ if ($conn->connect_error) {
                 } else {
                     echo "<td>" . $row["name"] . "</td>";
                 }
-                echo "<td><a href='?delete_code=" . $row["code"] . "' class='btn btn-danger' onclick='return confirm(\"Biztosan törölni szeretné?\")'>Törlés</a></td>";
-                echo "</tr>";
+                
             }
         } else {
             echo "<tr><td colspan='4'>Nem található kód</td></tr>";
@@ -66,46 +65,4 @@ if ($conn->connect_error) {
     </tbody>
 </table>
 
-<?php
-// Delete a code and its related data
-if (isset($_GET['delete_code'])) {
-    $code = $_GET['delete_code'];
 
-    // Fetch all questions related to the code
-    $sql = "SELECT id FROM quiz WHERE code = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $code);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Delete all answers related to each question
-    while ($row = $result->fetch_assoc()) {
-        $sql = "DELETE FROM answer WHERE quiz_id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $row['id']);
-        $stmt->execute();
-    }
-
-    // Delete from type table
-    $sql = "DELETE FROM type WHERE code = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $code);
-    $stmt->execute();
-
-    // Delete from card table
-    $sql = "DELETE FROM card WHERE code = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $code);
-    $stmt->execute();
-
-    // Delete from quiz table
-    $sql = "DELETE FROM quiz WHERE code = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $code);
-    $stmt->execute();
-
-    echo '<script>window.location.href = "https://katalogus.meheszmuzeum.hu/admina/deletecq.php";</script>';
-    
-    
-}
-?>
